@@ -6,7 +6,7 @@ function page404() {
 				404
 			</h1>
 			<p className="text-2xl text-black dark:text-white">
-				Page not found!!
+				Page not found!!!!!!
 			</p>
 		</div>
 	);
