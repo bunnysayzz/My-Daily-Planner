@@ -30,18 +30,10 @@ function Todo() {
 		}
 
 		if (edit.id) {
-			const newTodos = {
-				id: edit.id,
-				activity,
-				isComplete: edit.isComplete, // Preserve the completion status
-			};
-			const newTodo = todos.findIndex(function (todo) {
-				return todo.id === edit.id;
-			});
-
-			const newTodoList = [...todos];
-			newTodoList[newTodo] = newTodos;
-			setTodos(newTodoList);
+			const newTodos = todos.map(todo =>
+				todo.id === edit.id ? { ...todo, activity } : todo
+			);
+			setTodos(newTodos);
 			setActivity("");
 			setEdit("");
 			return;
@@ -51,16 +43,14 @@ function Todo() {
 	}
 
 	function removeHandler(id) {
-		const newTodos = todos.filter(function (todo) {
-			return todo.id !== id;
-		});
+		const newTodos = todos.filter(todo => todo.id !== id);
 		setTodos(newTodos);
 		cancelHandler();
 	}
 
-	function editHandler(Todo) {
-		setActivity(Todo.activity);
-		setEdit(Todo);
+	function editHandler(todo) {
+		setActivity(todo.activity);
+		setEdit(todo);
 	}
 
 	function cancelHandler() {
@@ -68,42 +58,33 @@ function Todo() {
 		setEdit("");
 	}
 
-	// clear all todos
 	function clearHandler() {
 		setTodos([]);
 	}
 
 	function toggleComplete(id) {
-		const newTodos = todos.map((todo) => {
-			if (todo.id === id) {
-				return {
-					...todo,
-					isComplete: !todo.isComplete,
-				};
-			}
-			return todo;
-		});
+		const newTodos = todos.map(todo =>
+			todo.id === id ? { ...todo, isComplete: !todo.isComplete } : todo
+		);
 		setTodos(newTodos);
 	}
 
 	return (
-		<div
-			className="p-4 pt-28  bg-white dark:bg-gray-900"
-			style={{ minHeight: "90vh" }}>
+		<div className="p-4 pt-28 bg-white dark:bg-gray-900 min-h-screen">
 			<div className="container mx-auto px-0 min-h-full min-w-full grid grid-cols-1 md:grid-cols-2">
 				<div className="flex justify-start flex-col items-center min-w-full">
 					<h1 className="text-2xl font-bold mb-4 text-black dark:text-white">
 						Todo List
 					</h1>
 					<form
-						className="mb-4 min-w-full px-3 md:px-20 "
+						className="mb-4 min-w-full px-3 md:px-20"
 						onSubmit={handleSubmit}>
 						<input
 							type="text"
 							name="todo"
 							value={activity}
 							placeholder="Add the task"
-							onChange={(e) => setActivity(e.target.value)}
+							onChange={e => setActivity(e.target.value)}
 							className={`border border-gray-400 p-2 rounded min-w-full ${
 								msg ? "border-red-500" : ""
 							}`}
@@ -146,9 +127,8 @@ function Todo() {
 							Added items will appear here
 						</p>
 					) : (
-						// Inside your Todo component's return statement, update the rendering of the todo list
 						<ul className="overflow-container min-w-full px-4 md:px-10 overflow-y-scroll max-h-[40rem] md:max-h-[45rem]">
-							{todos.map((todo) => (
+							{todos.map(todo => (
 								<li
 									key={todo.id}
 									className={`flex flex-row justify-between items-center p-2 mb-2 min-w-full border-l-4 ${
@@ -164,9 +144,7 @@ function Todo() {
 										}`}>
 										{todo.activity}
 									</span>
-									<div
-										className="buttons flex flex-row justify-end items-center"
-										style={{ minWidth: "150px" }}>
+									<div className="buttons flex flex-row justify-end items-center">
 										<button
 											onClick={() => editHandler(todo)}
 											className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded mr-2 ${
@@ -175,9 +153,7 @@ function Todo() {
 											<i className="fa-solid fa-pen-to-square"></i>
 										</button>
 										<button
-											onClick={() =>
-												removeHandler(todo.id)
-											}
+											onClick={() => removeHandler(todo.id)}
 											className={`bg-red-500 hover:bg-red-700 text-white font-bold rounded mr-2 ${
 												todo.isComplete
 													? "py-1 px-1"

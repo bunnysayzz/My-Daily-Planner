@@ -51,14 +51,13 @@ function Note() {
 		updatedNotes[index].text = textarea.value;
 		setNotes(updatedNotes);
 	}
-  // clear all notes
+
   const clearAllNotes = () => {
     setNotes([]);
   };
+
 	return (
-		<div
-			className="p-4 pt-28 bg-white dark:bg-gray-900"
-			style={{ minHeight: "90vh" }}>
+		<div className="p-4 pt-28 bg-white dark:bg-gray-900 min-h-screen">
 			<div className="container mx-auto px-0 min-h-full min-w-full grid grid-cols-1 md:grid-cols-2">
 				<div className="flex justify-start flex-col items-center min-w-full">
 					<h1 className="text-xl font-bold mb-4 text-black dark:text-white">
@@ -72,12 +71,12 @@ function Note() {
 					</p>
 					<div className="buttons">
 						<button
-							className="bg-green-500 text-white px-4 py-2 rounded mb-4 mr-4"
+							className="bg-green-500 text-white px-4 py-2 rounded mb-4 mr-4 transition duration-300 ease-in-out transform hover:scale-110"
 							onClick={() => addNote()}>
 							<i className="fa-solid fa-plus pr-3"></i>New Note
 						</button>
 						<button
-							className="bg-red-500 text-white px-4 py-2 rounded mb-4"
+							className="bg-red-500 text-white px-4 py-2 rounded mb-4 transition duration-300 ease-in-out transform hover:scale-110"
 							onClick={() => clearAllNotes()}>
 							<i className="fa-solid fa-trash pr-3"></i>Clear
 							Notes
@@ -95,11 +94,11 @@ function Note() {
 							No notes available
 						</p>
 					) : (
-						<div className="overlow-container md:px-10 px-3 flex justify-start flex-col items-center min-w-full overflow-y-scroll max-h-[40rem] md:max-h-[45rem]">
+						<div className="overflow-container md:px-10 px-3 flex justify-start flex-col items-center min-w-full overflow-y-scroll max-h-[40rem] md:max-h-[45rem]">
 							{notes.map((note, index) => (
 								<div
 									key={index}
-									className={`note-card shadow-md mb-4 p-2 border rounded min-w-full ${note.color} `}>
+									className={`note-card shadow-md mb-4 p-2 border rounded min-w-full ${note.color} transition duration-300 ease-in-out transform hover:scale-105`}>
 									<div className="flex justify-between items-center">
 										<div className="buttons max-w-[4rem]">
 											<button
