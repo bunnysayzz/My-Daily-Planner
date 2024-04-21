@@ -1,0 +1,186 @@
+/* 404.module.css */
+
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #181828;
+  font-size: 14px;
+  line-height: 1;
+}
+
+label {
+  cursor: pointer;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+  color: #000;
+}
+
+input, select, button, textarea {
+  margin: 0;
+  font-size: 100%;
+}
+
+html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input {
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+.top-header:before {
+  background-image: url(https://1.bp.blogspot.com/-gxsOcYWghHA/Xp_izTh4sFI/AAAAAAAAU8s/y637Fwg99qAuzW9na_NT_uApny8Vce95gCEwYBhgL/s1600/header-footer-gradient-bg.png);
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-repeat: repeat-x;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+.starsec,
+.starthird,
+.starfourth,
+.starfifth {
+  content: " ";
+  position: absolute;
+  background: transparent;
+}
+
+.starsec {
+  width: 3px;
+  height: 3px;
+  box-shadow: 571px 173px #00BCD4, /* Add more shadow values */
+              /* Other shadow values */
+              1546px 692px #F44336;
+  animation: animStar 150s linear infinite;
+}
+
+.starthird {
+  width: 3px;
+  height: 3px;
+  box-shadow: 571px 173px #00BCD4, /* Add more shadow values */
+              /* Other shadow values */
+              1546px 692px #F44336;
+  animation: animStar 10s linear infinite;
+}
+
+.starfourth {
+  width: 2px;
+  height: 2px;
+  box-shadow: 571px 173px #00BCD4, /* Add more shadow values */
+              /* Other shadow values */
+              1546px 692px #F44336;
+  animation: animStar 50s linear infinite;
+}
+
+.starfifth {
+  width: 1px;
+  height: 1px;
+  box-shadow: 571px 173px #00BCD4, /* Add more shadow values */
+              /* Other shadow values */
+              1546px 692px #F44336;
+  animation: animStar 80s linear infinite;
+}
+
+@keyframes animStar {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-2000px);
+  }
+}
+
+button {
+  border: none;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  background: none;
+  cursor: pointer;
+}
+
+:focus {
+  outline: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/* 2. CONTENT */
+
+/* 2.1. Section error */
+.error {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* 2.2. Section light */
+.light {
+  z-index: 99;
+  position: relative;
+  color: #FFF;
+}
+
+/* 2.3. Light */
+.in-cover-lamp,
+.in-cover-dark,
+.in-cover-sky {
+  animation: text-shadow 4s linear infinite;
+}
+
+@keyframes text-shadow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+}
