@@ -1,6 +1,6 @@
 # My Daily Planner
 
-"My Daily Planner" is a simple web application built to help users organize their daily tasks efficiently.
+Welcome to My Daily Planner! My Daily Planner is a simple web application designed to help users organize their daily tasks efficiently.
 
 ## Features
 
@@ -11,14 +11,32 @@
 
 ## Technologies Used
 
-- HTML
-- CSS
-- JavaScript
-- Bootstrap
+- **Frontend**: HTML, CSS, JavaScript
+- **Framework**: Bootstrap
 
-## Getting Started
+## Installation
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/bunnysayzz/My-Daily-Planner.git
+
+2. Open the `index.html` file in your web browser.
+
+3. Start planning your day!
+
+## Usage
+
+- Click on the "+" button to add a new task.
+- Click on a task to edit or delete it.
+- Use the priority dropdown to set the priority of a task.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+Special thanks to [bunnysayzz](https://github.com/bunnysayzz) for creating this awesome daily planner!
