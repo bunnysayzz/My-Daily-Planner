@@ -1,26 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+// Index.js
+
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SignInButton from "./SignInButton"; // Import the SignInButton component
 import { BrowserRouter } from 'react-router-dom';
+import { auth, signOutUser } from './auth'; // Remove import of signInWithGoogle
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-	const year = new Date().getFullYear();
-  
-root.render(
+const year = new Date().getFullYear();
+
+const AuthenticatedApp = () => (
   <BrowserRouter>
-  <React.StrictMode>
-    <Navbar />
-    <App />
-    <Footer var={year} />
-  </React.StrictMode>
+    <React.StrictMode>
+      <Navbar signOut={signOutUser} />
+      <App />
+      <Footer var={year} />
+    </React.StrictMode>
   </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+const Index = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <div>
+      {user ? <AuthenticatedApp /> : <SignInButton />}
+    </div>
+  );
+};
+
+ReactDOM.render(
+  <Index />,
+  document.getElementById('root')
+);
+
 reportWebVitals();

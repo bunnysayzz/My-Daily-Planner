@@ -1,8 +1,9 @@
-import "../css/Navbar.css";
+// Navbar.js
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ signOut }) => {
     // dark mode
     const [darkMode, setDarkMode] = useState(
         localStorage.getItem("darkMode") === "true" ? true : false
@@ -64,7 +65,7 @@ const Navbar = () => {
     }, [navOpen]);
 
     return (
-        <nav className="bg-gray-800 fixed w-screen z-50 ">
+        <nav className="bg-gray-800 fixed w-screen z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo or site title */}
@@ -84,29 +85,45 @@ const Navbar = () => {
                             <div className="ml-10 flex items-baseline space-x-4">
                                 <Link
                                     to="/"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    onClick={closeNav}
+                                >
                                     Home
                                 </Link>
                                 <Link
                                     to="/about"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    onClick={closeNav}
+                                >
                                     About
                                 </Link>
                                 <Link
                                     to="/todo"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    onClick={closeNav}
+                                >
                                     Todo
                                 </Link>
                                 <Link
                                     to="/note"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    onClick={closeNav}
+                                >
                                     Note
                                 </Link>
                                 <Link
                                     to="/expense-tracker"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    onClick={closeNav}
+                                >
                                     Expense Tracker
                                 </Link>
+                                <button
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    onClick={signOut}
+                                >
+                                    Sign out
+                                </button>
                             </div>
                             <div className="toggle-switch">
                                 <label className="switch-label">
@@ -123,18 +140,20 @@ const Navbar = () => {
                     </div>
 
                     {/* Responsive Menu */}
-                    <div className=" md:hidden ">
+                    <div className="md:hidden">
                         <button
                             id="nav-toggle"
                             onClick={toggleNav}
                             className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
-                            aria-label="Toggle navigation">
+                            aria-label="Toggle navigation"
+                        >
                             <svg
                                 className="h-6 w-6"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                stroke="currentColor">
+                                stroke="currentColor"
+                            >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -149,36 +168,52 @@ const Navbar = () => {
                 {/* Responsive Navigation */}
                 <div
                     id="nav-links"
-                    className={`md:hidden nav-links ${
-                        navOpen ? "show" : ""
-                    }`}>
+                    className={`md:hidden ${navOpen ? "block" : "hidden"}`}
+                >
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <Link
                             to="/"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                            onClick={closeNav}
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >
                             Home
                         </Link>
                         <Link
                             to="/about"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                            onClick={closeNav}
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >
                             About
                         </Link>
                         <Link
                             to="/todo"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                            onClick={closeNav}
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >
                             Todo
                         </Link>
                         <Link
                             to="/note"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                            onClick={closeNav}
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >
                             Note
                         </Link>
                         <Link
                             to="/expense-tracker"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                            onClick={closeNav}
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        >
                             Expense Tracker
                         </Link>
-                        {/* toggle dark mode */}
+                        <button
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                            onClick={signOut}
+                        >
+                            Sign out
+                        </button>
+                    </div>
+                    <div className="pt-4 pb-3 border-t border-gray-700">
                         <div className="toggle-switch">
                             <label className="switch-label">
                                 <input
