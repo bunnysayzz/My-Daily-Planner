@@ -1,6 +1,4 @@
-// auth.js
-
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithRedirect, GoogleAuthProvider, signOut } from "firebase/auth";
 import { app } from "./firebase";
 
 const auth = getAuth(app);
@@ -8,10 +6,8 @@ const provider = new GoogleAuthProvider();
 
 const signInWithGoogle = async () => {
   try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    console.log(user);
-    // Handle successful sign-in, e.g., update UI, store user data, etc.
+    await signInWithRedirect(auth, provider);
+    // No need to handle user data here since it will be handled after redirection
   } catch (error) {
     console.error(error);
     // Handle errors, e.g., display error messages to the user

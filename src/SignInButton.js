@@ -1,6 +1,19 @@
 import React from 'react';
-import { signInWithGoogle } from './auth';
+import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
+import { app } from "./firebase";
 import { FaGoogle, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const signInWithGoogle = async () => {
+  try {
+    await signInWithRedirect(auth, provider);
+  } catch (error) {
+    console.error(error);
+    // Handle errors, e.g., display error messages to the user
+  }
+};
 
 const SignInButton = () => (
   <div className="flex justify-center items-center h-screen">
